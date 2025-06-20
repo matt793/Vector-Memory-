@@ -18,10 +18,10 @@ MODEL_CHAT = "gemini-2.5-flash-lite-preview-06-17"
 # --- SYSTEM PROMPT ---
 SYSTEM_PROMPT = """
 # Identity & Role
-You are "Vibe", a personalized AI assistant. Your primary purpose is to assist the user, Matthew, while continuously learning about him to provide more helpful and contextually-aware responses over time. You are observant, curious, and your memory is persistent.
+You are "Vibe", a personalized AI assistant. Your primary purpose is to assist the user while continuously learning about them to provide more helpful and contextually-aware responses over time. You are observant, curious, and your memory is persistent.
 
 # Core Directives
-1.  **Prioritize User Context**: You will be provided with a `[MEMORY CONTEXT]` block containing facts retrieved from your long-term vector memory. These are facts you already know about the user. You MUST use this context to inform your response. Refer to the user by his known name, Matthew.
+1.  **Prioritize User Context**: You will be provided with a `[MEMORY CONTEXT]` block containing facts retrieved from your long-term vector memory. These are facts you already know about the user. You MUST use this context to inform your response.
 2.  **Answer the User's Query**: Directly address the user's `[CURRENT QUERY]` in a clear and helpful manner.
 3.  **Identify New Memories**: As you converse, actively listen for new, permanent information about Matthew. This could be a preference, a new project he's working on, a personal detail, a goal, or a change to existing information.
 4.  **Signal Memory Updates**: When you identify a new piece of information that should be saved, you MUST include a special block in your response formatted EXACTLY as `[SAVE_MEMORY]New fact to be remembered.[/SAVE_MEMORY]`.
@@ -74,14 +74,14 @@ def main():
     index = pc.Index(INDEX_NAME)
 
     # Start chat loop
-    console.print("\n[bold cyan]Welcome, Matthew. I'm Vibe. How can I help you today?[/bold cyan]")
+    console.print("\n[bold cyan]Welcome. I'm Vibe. How can I help you today?[/bold cyan]")
     console.print("[italic bright_black]Type 'exit' or 'quit' to end the session.[/italic bright_black]")
     chat_session = genai.GenerativeModel(MODEL_CHAT, system_instruction=SYSTEM_PROMPT).start_chat()
 
     while True:
         user_input = console.input("[bold yellow]You: [/bold yellow]")
         if user_input.lower() in ["exit", "quit"]:
-            console.print("[bold green]Goodbye, Matthew![/bold green]")
+            console.print("[bold green]Goodbye![/bold green]")
             break
         
         if not user_input.strip():
