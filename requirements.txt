@@ -2,3 +2,4 @@ google-generativeai
 pinecone
 python-dotenv
 rich
+numpy

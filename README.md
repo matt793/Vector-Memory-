@@ -8,6 +8,7 @@ Vector Memory is a terminal-based AI assistant that uses Google's Gemini for con
 -   **Persistent Memory**: Remembers key facts from conversations.
 -   **Context-Aware Responses**: Retrieves relevant memories to provide contextually-aware, personalized responses.
 -   **Continuous Learning**: Continuously learns and appends new memories over time.
+-   **Vector Normalization**: Ensures that vector embeddings are normalized for accurate cosine similarity calculations, making the system more robust.
 
 ## How It Works
 
@@ -44,6 +45,7 @@ graph TD
     -   `pinecone-client`
     -   `python-dotenv`
     -   `rich`
+    -   `numpy`
 
 ## Setup and Installation
 
