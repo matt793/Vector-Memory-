@@ -1,5 +1,6 @@
 import os
 import re
+import numpy as np
 from pinecone import Pinecone, ServerlessSpec
 import google.generativeai as genai
 from dotenv import load_dotenv
@@ -110,9 +111,17 @@ def main():
             console.print("[italic bright_black]Memories saved.[/italic bright_black]\n")
 
 
+def normalize_vector(v):
+    """Normalizes a vector to a magnitude of 1 (L2 normalization)."""
+    norm = np.linalg.norm(v)
+    if norm == 0:
+       return v
+    return v / norm
+
 def get_embedding(text):
-    """Generates an embedding for the given text."""
-    return genai.embed_content(model=MODEL_EMBEDDING, content=text)['embedding']
+    """Generates a normalized embedding for the given text."""
+    embedding = genai.embed_content(model=MODEL_EMBEDDING, content=text)['embedding']
+    return normalize_vector(embedding).tolist()
 
 def upsert_memory(fact, index):
     """Embeds a fact and upserts it into the Pinecone index."""
