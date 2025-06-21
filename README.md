@@ -1,6 +1,6 @@
 # Vector Memory
 
-Vector Memory is a terminal-based AI assistant that uses Google's Gemini for conversational intelligence and Pinecone for persistent, quarriable long-term memory.
+Vector Memory is a terminal-based AI assistant that uses Google's Gemini for conversational intelligence and Pinecone for persistent, queryable long-term memory.
 
 ## Features
 
